@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\CourrierEntrant;
+use App\Models\ArchiveEntrant;
+use App\Models\CourrierSortant;
+use App\Models\ArchiveSortant;
 
 class User extends Authenticatable
 {
@@ -21,6 +25,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'division',
+        'services',
+        'poste'
     ];
 
     /**
@@ -41,4 +48,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function courrierEntrants(){
+        return $this->hasMany(CourrierEntrant::class);
+    }
+
+    public function archiveEntrants(){
+        return $this->hasMany(ArchiveEntrant::class);
+    }
+
+    public function courrierSortants(){
+        return $this->hasMany(CourrierSortant::class);
+    }
+
+    public function archiveSortants(){
+        return $this->hasMany(ArchiveSortant::class);
+    }
 }

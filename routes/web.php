@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourrierEntrantController;
+use App\Http\Controllers\ArchiveEntrantController;
+use App\Http\Controllers\CourrierSortantController;
+use App\Http\Controllers\ArchiveSortantController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/users',UserController::class);
+Route::resource('/courrier_entrants',CourrierEntrantController::class);
+Route::resource('/archive_entrants',ArchiveEntrantController::class);
+Route::resource('/courrier_sortants',CourrierSortantController::class);
+Route::resource('/archive_sortants',ArchiveSortantController::class);
