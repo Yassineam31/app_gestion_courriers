@@ -16,7 +16,7 @@
       <div dir="rtl">
         <div class="dashboard">
           <div class="G1">
-            <a href="" class="button courrierEntrant" style='text-decoration:none;color:black;'>
+            <a href="{{route('courrier_entrants.index')}}" class="button courrierEntrant" style='text-decoration:none;color:black;'>
                 <i class="fa-solid fa-inbox" style='font-size:30px;'></i>
                 البريد الوارد
             </a>

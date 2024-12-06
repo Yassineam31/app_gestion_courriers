@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourrierEntrantController;
 use App\Http\Controllers\ArchiveEntrantController;
 use App\Http\Controllers\CourrierSortantController;
 use App\Http\Controllers\ArchiveSortantController;
-use App\Http\Controllers\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
