@@ -62,10 +62,4 @@
   .button:active{
     border: 2px solid black;
   }
-  footer{
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    border: 1px white solid ;
-    border-bottom: none;
-  }
+  
