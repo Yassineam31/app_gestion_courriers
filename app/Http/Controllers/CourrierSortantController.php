@@ -38,7 +38,7 @@ class CourrierSortantController extends Controller
      */
     public function show(CourrierSortant $courrierSortant)
     {
-        //
+        return view('courrier_sortants.show',compact('courrierSortant'));
     }
 
     /**
@@ -46,7 +46,7 @@ class CourrierSortantController extends Controller
      */
     public function edit(CourrierSortant $courrierSortant)
     {
-        //
+        return view('courrier_sortants.edit',compact('courrierSortant'));
     }
 
     /**

@@ -34,8 +34,8 @@
             <td>{{$courrier_entrant->Statut}}</td>
             <td>
                 <a href="" title='أرشفة'><i class="fa-solid fa-inbox"></i></a>
-                |<a href="" title='تغيير'><i class="fa-solid fa-pen-to-square" style="margin-right:2px;"></i></a><br>
-                <a href="" title='إظهار'> <i class="fa-solid fa-eye"></i></a>
+                |<a href="{{route('courrier_entrants.edit',$courrier_entrant->id)}}" title='تغيير'><i class="fa-solid fa-pen-to-square" style="margin-right:2px;"></i></a><br>
+                <a href="{{route('courrier_entrants.show',$courrier_entrant->id)}}" title='إظهار'> <i class="fa-solid fa-eye"></i></a>
                 |<button id="" title='مسح'><i class="fa-solid fa-trash" style="margin-right:6px;"></i></button>
             </td>
         </tr>
