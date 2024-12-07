@@ -62,6 +62,7 @@ class CourrierSortantController extends Controller
      */
     public function destroy(CourrierSortant $courrierSortant)
     {
-        //
+        $courrierSortant->delete();
+        return back()->with('danger','Le courrier est supprimé avec succés.');
     }
 }
