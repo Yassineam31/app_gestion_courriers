@@ -1,0 +1,16 @@
+.custom-file-input,.statut {
+    width: auto;
+}
+.form-check-label,.form-check-input {
+    display: inline-block;
+    margin-right: 30px;
+}
+.fa-solid{
+    margin-right: 10px; 
+}
+button{
+    width: 120px;
+    position: absolute;
+    left:100px;
+    
+}

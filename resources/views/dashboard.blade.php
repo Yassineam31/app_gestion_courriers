@@ -26,7 +26,7 @@
             </a>
           </div>
           <div class="G2">
-            <a href="" class="button courrierSortant" style='text-decoration:none;color:black;'>
+            <a href="{{route('courrier_sortants.index')}}" class="button courrierSortant" style='text-decoration:none;color:black;'>
                 <i class="fa-regular fa-envelope" style='font-size:30px;'></i>
                 البريد الصادر
             </a>

@@ -22,7 +22,7 @@ class CourrierEntrantController extends Controller
      */
     public function create()
     {
-        //
+        return view('courrier_entrants.create');
     }
 
     /**

@@ -9,7 +9,9 @@ export default defineConfig({
                 'resources/css/dashboard.css',
                 'resources/css/sideBar.css',
                 'resources/css/footer.css',
-                'resources/css/courrierEntrants.css',
+                'resources/css/courrierIndex.css',
+                'resources/css/formEntrant.css',
+                'resources/css/formSortant.css',
                 'resources/js/app.js',
                 'resources/js/sideBar.js',
                 

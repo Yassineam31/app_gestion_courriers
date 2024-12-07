@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CourrierSortant;
 use Illuminate\Http\Request;
+use Illuminate\pagination\paginator;
 
 class CourrierSortantController extends Controller
 {
@@ -12,7 +13,8 @@ class CourrierSortantController extends Controller
      */
     public function index()
     {
-        //
+        $courrier_sortants=CourrierSortant::orderBy('created_at')->paginate(5);
+        return view('courrier_sortants.index',compact('courrier_sortants'));
     }
 
     /**
@@ -20,7 +22,7 @@ class CourrierSortantController extends Controller
      */
     public function create()
     {
-        //
+        return view('courrier_sortants.create');
     }
 
     /**
