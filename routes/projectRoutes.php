@@ -7,6 +7,7 @@ use App\Http\Controllers\CourrierEntrantController;
 use App\Http\Controllers\ArchiveEntrantController;
 use App\Http\Controllers\CourrierSortantController;
 use App\Http\Controllers\ArchiveSortantController;
+use App\Http\Controllers\ExtraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,5 @@ Route::resource('/courrier_entrants',CourrierEntrantController::class);
 Route::resource('/archive_entrants',ArchiveEntrantController::class);
 Route::resource('/courrier_sortants',CourrierSortantController::class);
 Route::resource('/archive_sortants',ArchiveSortantController::class);
+Route::get('/archiverCourrierEntrant/{id}',[ExtraController::class,'archiverCourrierEntrant'])->name('archiveIncome');
+Route::get('/archiverCourrierSortant/{id}',[ExtraController::class,'archiverCourrierSortant'])->name('archiveOutgo');

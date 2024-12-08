@@ -11,7 +11,7 @@
 <body >
     <div class="container">
         <h1 class="text-center mb-4">إستمارة البريد الوارد</h1>
-        <form action="ajout" method="POST">
+        <form action="{{route('courrier_entrants.store')}}" method="POST">
             @csrf
             <div class="row mb-3">
                 <div class="col">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col">
                     <label for="date_envoi_entite" class="form-label">تاريخ إرسال الجهة المرسلة :</label>
-                    <input type="date" class="form-control" id="date_envoi_entite" name="NumeroEnvoiEntiteExpeditrice">
+                    <input type="date" class="form-control" id="date_envoi_entite" name="DateEnvoiEntiteExpeditrice">
                 </div>
                 <div class="col">
                     <label for="numero_envoi" class="form-label">رقم إرسال الجهة المرسلة :</label>

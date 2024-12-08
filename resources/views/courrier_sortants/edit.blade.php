@@ -11,8 +11,9 @@
 <body >
     <div class="container">
         <h1 class="text-center mb-4">تعديل بيانات البريد الصادر</h1>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{route('courrier_sortants.update',$courrierSortant->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('put')
             <div class="row mb-3">
                 <div class="col">
                     <label for="reference" class="form-label">المرجع :</label>
@@ -65,7 +66,7 @@
             </div>
                 <div class="mb-3">
                     <label for="Objet_correspondance" class="form-label">موضوع المراسلة <span style='color:red;'>*</span>:</label>
-                    <textarea class="form-control" id="Objet_correspondance" name="ObjetCorrespondance" rows="3">{{$courrierSortant->ObjetCorrespondance}}</textarea>
+                    <textarea class="form-control w-50" id="Objet_correspondance" name="ObjetCorrespondance" rows="3">{{$courrierSortant->ObjetCorrespondance}}</textarea>
                     @error('ObjetCorrespondance')
                     <span class='text-danger'>{{$message}}</span>
                     @enderror

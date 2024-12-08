@@ -13,7 +13,7 @@ class CourrierSortantController extends Controller
      */
     public function index()
     {
-        $courrier_sortants=CourrierSortant::orderBy('created_at')->paginate(5);
+        $courrier_sortants=CourrierSortant::orderBy('created_at','desc')->paginate(5);
         return view('courrier_sortants.index',compact('courrier_sortants'));
     }
 
@@ -30,7 +30,26 @@ class CourrierSortantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $data=$request->validate([
+                'Destinataire'=>'required',
+                'CorrespondanceRequiertReponse'=>'required',
+                'ObjetCorrespondance'=>'required',
+                'TelechargementCorrespondance'=>'required'
+            ],[
+                'Destinataire.required' => ' يرجى تقديم معلومات المرسل إليه.',
+                'CorrespondanceRequiertReponse.required' =>'يرجى تحديد ما إذا كانت المراسلة تتطلب الرد أم لا.',
+                'ObjetCorrespondance.required' => 'يرجى تحديد موضوع المراسلة.',
+                'TelechargementCorrespondance.required' => 'يرجى تحميل المراسلة.',     
+        ]);
+        $data['Reference']=$request['Reference'];
+        $data['NumeroEnvoiAcademie']=$request['NumeroEnvoiAcademie'];
+        $data['DateEnvoiAcademie']=$request['DateEnvoiAcademie'];
+        $data['DernierDelaiReceptionReponse']=$request['DernierDelaiReceptionReponse'];
+        $data['ReponseRecue']=$request['ReponseRecue'];
+        $data['Statut']=$request['Statut'];
+        $data['user_id']=5;
+        $post=CourrierSortant::create($data);
+        return redirect()->route('courrier_sortants.index')->with('success','تمت إضافة البريد بنجاح');
     }
 
     /**
@@ -54,7 +73,26 @@ class CourrierSortantController extends Controller
      */
     public function update(Request $request, CourrierSortant $courrierSortant)
     {
-        //
+        $data=$request->validate([
+            'Destinataire'=>'required',
+            'CorrespondanceRequiertReponse'=>'required',
+            'ObjetCorrespondance'=>'required',
+            'TelechargementCorrespondance'=>'required'
+        ],[
+            'Destinataire.required' => ' يرجى تقديم معلومات المرسل إليه.',
+            'CorrespondanceRequiertReponse.required' =>'يرجى تحديد ما إذا كانت المراسلة تتطلب الرد أم لا.',
+            'ObjetCorrespondance.required' => 'يرجى تحديد موضوع المراسلة.',
+            'TelechargementCorrespondance.required' => 'يرجى تحميل المراسلة.',     
+        ]);
+        $data['Reference']=$request['Reference'];
+        $data['NumeroEnvoiAcademie']=$request['NumeroEnvoiAcademie'];
+        $data['DateEnvoiAcademie']=$request['DateEnvoiAcademie'];
+        $data['DernierDelaiReceptionReponse']=$request['DernierDelaiReceptionReponse'];
+        $data['ReponseRecue']=$request['ReponseRecue'];
+        $data['Statut']=$request['Statut'];
+        $data['user_id']=5;
+        $courrierSortant->update($data);
+        return redirect()->route('courrier_sortants.index')->with('success','تم تعديل البريد بنجاح');
     }
 
     /**
@@ -63,6 +101,6 @@ class CourrierSortantController extends Controller
     public function destroy(CourrierSortant $courrierSortant)
     {
         $courrierSortant->delete();
-        return back()->with('danger','Le courrier est supprimé avec succés.');
+        return back()->with('danger','تمت إزالة البريد بنجاح');
     }
 }

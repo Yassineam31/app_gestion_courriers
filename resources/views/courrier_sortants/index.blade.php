@@ -33,8 +33,8 @@
                 <td style="max-width: 200px; word-wrap: break-word;">{{$courrier_sortant->ObjetCorrespondance}}</td>
                 <td>{{$courrier_sortant->Statut}}</td>
                 <td>
-                    <a href="" title='أرشفة'><i class="fa-solid fa-inbox"></i></a>
-                    |<a href="{{route('courrier_sortants.edit',$courrier_sortant->id)}}" title='تغيير'><i class="fa-solid fa-pen-to-square" style="margin-right:2px;"></i></a><br>
+                    <a href="{{route('archiveOutgo',$courrier_sortant->id)}}" title='أرشفة'><i class="fa-solid fa-inbox"></i></a>
+                    |<a href="{{route('courrier_sortants.edit',$courrier_sortant->id)}}" title='تعديل'><i class="fa-solid fa-pen-to-square" style="margin-right:2px;"></i></a><br>
                     <a href="{{route('courrier_sortants.show',$courrier_sortant->id)}}" title='إظهار'> <i class="fa-solid fa-eye"></i></a>
                     | <button id="openModalBtn{{$courrier_sortant->id}}" title='مسح'><i class="fa-solid fa-trash"></i></button>
                 </td>

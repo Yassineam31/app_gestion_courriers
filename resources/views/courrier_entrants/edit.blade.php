@@ -11,8 +11,9 @@
 <body >
     <div class="container">
     <h1 class="text-center mb-4">تعديل بيانات البريد الوارد</h1>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{route('courrier_entrants.update',$courrierEntrant->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('put')
             <div class="row mb-3">
                 <div class="col">
                     <label for="reference" class="form-label">المرجع :</label>
@@ -75,7 +76,7 @@
             </div>
             <div class="mb-3">
                 <label for="sujet" class="form-label">موضوع المراسلة <span style='color:red;'>*</span>:</label>
-                <textarea class="form-control" id="SujetCorrespondance" name="sujet" rows="3" style="max-width: 700px;">{{$courrierEntrant->SujetCorrespondance}}</textarea>
+                <textarea class="form-control" id="SujetCorrespondance" name="SujetCorrespondance" rows="3" style="max-width: 700px;">{{$courrierEntrant->SujetCorrespondance}}</textarea>
                 @error('SujetCorrespondance')
                 <span class='text-danger'>{{$message}}</span>
                 @enderror
@@ -88,7 +89,7 @@
                     <!-- Afficher le nom du fichier actuellement téléchargé -->
                     <p>{{ basename($courrierEntrant->TelechargementCorrespondance) }}</p>
                     <!-- Champ caché pour stocker le chemin du fichier déjà téléchargé -->
-                    <input type="hidden" name="ancien_telechargement" value="{{$courrierEntrant->TelechargementCorrespondance}}">
+                    <input type="hidden" name="TelechargementCorrespondance" value="{{$courrierEntrant->TelechargementCorrespondance}}">
                 @endif
                 @error('TelechargementCorrespondance')
                     <span class='text-danger'>{{$message}}</span>

@@ -13,7 +13,7 @@ class CourrierEntrantController extends Controller
      */
     public function index()
     {
-        $courrier_entrants=CourrierEntrant::orderBy('created_at')->paginate(5);
+        $courrier_entrants=CourrierEntrant::orderBy('created_at','desc')->paginate(5);
         return view('courrier_entrants.index',compact('courrier_entrants'));
     }
 
@@ -30,7 +30,29 @@ class CourrierEntrantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->validate([
+                'Expediteur'=>'required',
+                'CorrespondanceRequiertReponse'=>'required',
+                'SujetCorrespondance'=>'required',
+                'TelechargementCorrespondance'=>'required'
+            ],[
+                'Expediteur.required' => 'يرجى تقديم معلومات المرسل.',
+                'CorrespondanceRequiertReponse.required' => 'يرجى تحديد ما إذا كانت المراسلة تتطلب الرد أم لا.',
+                'SujetCorrespondance.required' => 'يرجى تحديد موضوع المراسلة.',
+                'TelechargementCorrespondance.required' => 'يرجى تحميل المراسلة.',     
+        ]);
+            $data['Reference']=$request['Reference'];
+            $data['NumeroInscriptionAcademie']=$request['NumeroInscriptionAcademie'];
+            $data['DateInscriptionAcademie']=$request['DateInscriptionAcademie'];
+            $data['DateEnvoiEntiteExpeditrice']=$request['DateEnvoiEntiteExpeditrice'];
+            $data['NumeroEnvoiEntiteExpeditrice']=$request['NumeroEnvoiEntiteExpeditrice'];
+            $data['Repondu']=$request['Repondu'];
+            $data['DernierDelaiReponse']=$request['DernierDelaiReponse'];
+            $data['Statut']=$request['Statut'];
+            $data['user_id']=5;
+
+        $post=CourrierEntrant::create($data);
+        return redirect()->route('courrier_entrants.index')->with('success','تمت إظافة البريد بنجاح');
     }
 
     /**
@@ -54,7 +76,29 @@ class CourrierEntrantController extends Controller
      */
     public function update(Request $request, CourrierEntrant $courrierEntrant)
     {
-        //
+        $data=$request->validate([
+            'Expediteur'=>'required',
+            'CorrespondanceRequiertReponse'=>'required',
+            'SujetCorrespondance'=>'required',
+            'TelechargementCorrespondance'=>'required'
+        ],[
+            'Expediteur.required' => 'يرجى تقديم معلومات المرسل.',
+            'CorrespondanceRequiertReponse.required' => 'يرجى تحديد ما إذا كانت المراسلة تتطلب الرد أم لا.',
+            'SujetCorrespondance.required' => 'يرجى تحديد موضوع المراسلة.',
+            'TelechargementCorrespondance.required' => 'يرجى تحميل المراسلة.',     
+    ]);
+        $data['Reference']=$request['Reference'];
+        $data['NumeroInscriptionAcademie']=$request['NumeroInscriptionAcademie'];
+        $data['DateInscriptionAcademie']=$request['DateInscriptionAcademie'];
+        $data['DateEnvoiEntiteExpeditrice']=$request['DateEnvoiEntiteExpeditrice'];
+        $data['NumeroEnvoiEntiteExpeditrice']=$request['NumeroEnvoiEntiteExpeditrice'];
+        $data['Repondu']=$request['Repondu'];
+        $data['DernierDelaiReponse']=$request['DernierDelaiReponse'];
+        $data['Statut']=$request['Statut'];
+        $data['user_id']=5;
+
+        $courrierEntrant->update($data);
+        return redirect()->route('courrier_entrants.index')->with('success','تم تعديل البريد بنجاح');
     }
 
     /**
