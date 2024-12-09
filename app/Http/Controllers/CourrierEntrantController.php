@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CourrierEntrant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\pagination\paginator;
 
 class CourrierEntrantController extends Controller
@@ -41,6 +42,10 @@ class CourrierEntrantController extends Controller
                 'SujetCorrespondance.required' => 'يرجى تحديد موضوع المراسلة.',
                 'TelechargementCorrespondance.required' => 'يرجى تحميل المراسلة.',     
         ]);
+            if($request->hasFile('TelechargementCorrespondance')){
+                $fileName=Str::random(2).'_'.$request->file('TelechargementCorrespondance')->getClientOriginalName();
+                $data['TelechargementCorrespondance']=$request->file('TelechargementCorrespondance')->storeAs('courrierEntrant',$fileName,'public');
+            }
             $data['Reference']=$request['Reference'];
             $data['NumeroInscriptionAcademie']=$request['NumeroInscriptionAcademie'];
             $data['DateInscriptionAcademie']=$request['DateInscriptionAcademie'];
@@ -87,6 +92,10 @@ class CourrierEntrantController extends Controller
             'SujetCorrespondance.required' => 'يرجى تحديد موضوع المراسلة.',
             'TelechargementCorrespondance.required' => 'يرجى تحميل المراسلة.',     
     ]);
+        if($request->hasFile('TelechargementCorrespondance')){
+            $fileName=Str::random(2).'_'.$request->file('TelechargementCorrespondance')->getClientOriginalName();
+            $data['TelechargementCorrespondance']=$request->file('TelechargementCorrespondance')->storeAs('courrierEntrant',$fileName,'public');
+        }
         $data['Reference']=$request['Reference'];
         $data['NumeroInscriptionAcademie']=$request['NumeroInscriptionAcademie'];
         $data['DateInscriptionAcademie']=$request['DateInscriptionAcademie'];

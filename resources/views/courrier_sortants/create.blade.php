@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h1 class="text-center mb-4">إستمارة البريد الصادر</h1>
-        <form action="{{route('courrier_sortants.store')}}" method="POST">
+        <form action="{{route('courrier_sortants.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
                 <div class="col">

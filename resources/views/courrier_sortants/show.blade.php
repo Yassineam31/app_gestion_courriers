@@ -34,7 +34,12 @@
                         <p class="card-text"><span>تم الرد عليها :</span> {{ $courrierSortant->ReponseRecue }}</p>
                         <p class="card-text"><span>آخر أجل للرد :</span> {{ $courrierSortant->DernierDelaiReceptionReponse }}</p>
                         <p class="card-text"><span>حالة المراسلة :</span> {{ $courrierSortant->Statut }}</p>
-                        <p class="card-text"><span>المرفقات :</span>{{ asset($courrierSortant->TelechargementCorrespondance) }}<a href="{{ asset($courrierSortant->TelechargementCorrespondance) }}" style='font-weight:700;text-decoration:none;margin-right:10px' download >تحميــــل </a></p>
+                        <p class="card-text"><span>المرفقات :</span>
+                            <a href="{{ asset('storage/'.$courrierSortant->TelechargementCorrespondance) }}" download="{{basename($courrierSortant->TelechargementCorrespondance)}}" style="text-decoration:none;"> 
+                                <i class="fa-solid fa-download"></i>
+                                <i style="margin-left:10px; font-size:13px;color:black">{{ basename($courrierSortant->TelechargementCorrespondance) }}</i>
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>

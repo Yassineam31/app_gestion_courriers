@@ -74,12 +74,7 @@
                 <div class="mb-3">
                     <label for="telechargement" class="form-label">تحميل المراسلة <span style='color:red;'>*</span>:</label>
                     <input type="file" class="form-control custom-file-input" id="telechargement" name="TelechargementCorrespondance">
-                    @if($courrierSortant->TelechargementCorrespondance)
-                        <!-- Afficher le nom du fichier actuellement téléchargé -->
                         <p>{{ basename($courrierSortant->TelechargementCorrespondance) }}</p>
-                        <!-- Champ caché pour stocker le chemin du fichier déjà téléchargé -->
-                        <input type="hidden" name="TelechargementCorrespondance" value="{{$courrierSortant->TelechargementCorrespondance}}">
-                    @endif
                     @error('TelechargementCorrespondance')
                         <span class='text-danger'>{{$message}}</span>
                     @enderror
