@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/css/courrierIndex.css',
                 'resources/css/formEntrant.css',
                 'resources/css/formSortant.css',
+                'resources/css/show.css',
                 'resources/js/app.js',
                 'resources/js/sideBar.js',
                 

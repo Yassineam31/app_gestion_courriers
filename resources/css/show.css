@@ -1,0 +1,29 @@
+span{
+    font-size:15px;
+    font-weight:600;
+}
+.print{
+    text-align:left;
+    height: 0px;
+    position: relative;
+    top:30px;
+    left:30px;
+    cursor: pointer;
+}
+h1{
+    display: none;
+}
+@media print {
+        body * {
+            visibility: hidden;
+        }
+        #contentToPrint, #contentToPrint * {
+            visibility: visible;
+        }
+        h1{
+             display: block;
+        }
+        .fa-download{
+            display: none;
+        }
+    }
