@@ -14,19 +14,23 @@ class ExtraController extends Controller
     public function archiverCourrierEntrant($id){
         DB::transaction(function () use ($id) {
         $courrierEntrant = CourrierEntrant::findOrFail($id);
-        ArchiveEntrant::create($courrierEntrant->toArray());
+        $archiveEnt = $courrierEntrant->toArray();
+        $archiveEnt['courrier_entrants_id'] = $id;
+        ArchiveEntrant::create($archiveEnt);
         $courrierEntrant->delete();  
     });
-        return back()->with('success', 'تمت أرشفة البريد بنجاح');
+        return back()->with('success', 'تمت إضافة البريد إلى الأرشيف بنجاح');
     }
 
     public function archiverCourrierSortant($id){
         DB::transaction(function () use ($id) {
         $courrierSortant = CourrierSortant::findOrFail($id);
-        ArchiveSortant::create($courrierSortant->toArray());
+        $archiveSort=$courrierSortant->toArray();
+        $archiveSort['courrier_sortants_id']=$id;
+        ArchiveSortant::create($archiveSort);
         $courrierSortant->delete();  
     });
-        return back()->with('success', 'تمت أرشفة البريد بنجاح');
+        return back()->with('success', 'تمت إضافة البريد إلى الأرشيف بنجاح');
     }
 
     public function pageArchives(){

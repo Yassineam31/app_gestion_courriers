@@ -26,9 +26,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
-            /*$table->foreignId('courrier_sortants_id')->constrained('courrier_sortants')
+            $table->foreignId('courrier_sortants_id')->constrained('courrier_sortants')
                 ->onUpdate('restrict')
-                ->onDelete('restrict');*/
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }
