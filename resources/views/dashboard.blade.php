@@ -37,7 +37,7 @@
                   
           </div>
           <div class="G3">
-            <a href="" class="button archive" style='text-decoration:none;color:black;'>
+            <a href="{{route('archivePage')}}" class="button archive" style='text-decoration:none;color:black;'>
                 <i class="fa-solid fa-box-archive" style='font-size:30px;'></i>
                  الأرشـيف
             </a>

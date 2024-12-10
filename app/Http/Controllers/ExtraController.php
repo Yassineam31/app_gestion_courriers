@@ -17,7 +17,7 @@ class ExtraController extends Controller
         ArchiveEntrant::create($courrierEntrant->toArray());
         $courrierEntrant->delete();  
     });
-    return back()->with('success', 'تمت أرشفة البريد بنجاح');
+        return back()->with('success', 'تمت أرشفة البريد بنجاح');
     }
 
     public function archiverCourrierSortant($id){
@@ -26,7 +26,28 @@ class ExtraController extends Controller
         ArchiveSortant::create($courrierSortant->toArray());
         $courrierSortant->delete();  
     });
-    return back()->with('success', 'تمت أرشفة البريد بنجاح');
+        return back()->with('success', 'تمت أرشفة البريد بنجاح');
     }
 
+    public function pageArchives(){
+        return view('archives');
+    }
+
+    public function restaureArchiveEntrant($id){
+        DB::transaction(function () use ($id) {
+        $archiveEntrant = ArchiveEntrant::findOrFail($id);
+        CourrierEntrant::create($archiveEntrant->toArray());
+        $archiveEntrant->delete();  
+    });
+        return back()->with('success', 'تم إرجاع البريد بنجاح');
+    }
+
+    public function restaureArchiveSortant($id){
+        DB::transaction(function () use ($id) {
+        $archiveSortant = ArchiveSortant::findOrFail($id);
+        CourrierSortant::create($archiveSortant->toArray());
+        $archiveSortant->delete();  
+    });
+        return back()->with('success', 'تم إرجاع البريد بنجاح');
+    }
 }

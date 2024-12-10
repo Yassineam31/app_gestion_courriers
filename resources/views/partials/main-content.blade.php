@@ -1,4 +1,6 @@
 @once
-    {{-- Contenu principal --}}
-        @yield('main-content')
+    <div class="container" id="mainContent">
+        {{-- Contenu principal --}}
+            @yield('main-content')
+    </div>
 @endonce

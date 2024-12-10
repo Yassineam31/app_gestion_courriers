@@ -1,7 +1,6 @@
 @extends('layout')
 @section('title','البريد الوارد')
 @section('main-content')
-<div class="container" id="mainContent">
     <table class="table table-striped table-hover">
         <tr>
             <td colspan='7' style="background-color: #353b49;">
@@ -33,7 +32,7 @@
             <td style="max-width: 200px; word-wrap: break-word;">{{$courrier_entrant->SujetCorrespondance}}</td>
             <td>{{$courrier_entrant->Statut}}</td>
             <td>
-                <a href="{{route('archiveIncome',$courrier_entrant->id)}}" title='أرشفة'><i class="fa-solid fa-inbox"></i></a>
+                <a href="{{route('archiveIncoming',$courrier_entrant->id)}}" title='أرشفة'><i class="fa-solid fa-inbox"></i></a>
                |<a href="{{route('courrier_entrants.edit',$courrier_entrant->id)}}" title='تعديل'><i class="fa-solid fa-pen-to-square"></i></a><br>
                 <a href="{{route('courrier_entrants.show',$courrier_entrant->id)}}" title='إظهار'><i class="fa-solid fa-eye"></i></a>
                | <button id="openModalBtn{{$courrier_entrant->id}}" title='مسح'><i class="fa-solid fa-trash"></i></button>
@@ -99,6 +98,4 @@
     <div dir='ltr' class="pagination-centered">
         {{ $courrier_entrants->links() }}
     </div>
-</div>
-
 @endsection

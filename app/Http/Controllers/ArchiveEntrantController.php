@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ArchiveEntrant;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\pagination\paginator;
 
 class ArchiveEntrantController extends Controller
 {
@@ -12,7 +14,8 @@ class ArchiveEntrantController extends Controller
      */
     public function index()
     {
-        //
+        $archive_entrants = ArchiveEntrant::orderBy('created_at', 'desc')->paginate(5);
+        return view('archive_entrants.index',compact('archive_entrants'));
     }
 
     /**
@@ -36,7 +39,7 @@ class ArchiveEntrantController extends Controller
      */
     public function show(ArchiveEntrant $archiveEntrant)
     {
-        //
+        return view('archive_entrants.show',compact('archiveEntrant'));
     }
 
     /**
@@ -44,7 +47,7 @@ class ArchiveEntrantController extends Controller
      */
     public function edit(ArchiveEntrant $archiveEntrant)
     {
-        //
+        return view('archive_entrants.edit',compact('archiveEntrant'));
     }
 
     /**
@@ -52,7 +55,33 @@ class ArchiveEntrantController extends Controller
      */
     public function update(Request $request, ArchiveEntrant $archiveEntrant)
     {
-        //
+        $data=$request->validate([
+            'Expediteur'=>'required',
+            'CorrespondanceRequiertReponse'=>'required',
+            'SujetCorrespondance'=>'required',
+            'TelechargementCorrespondance'=>$request->hasFile('TelechargementCorrespondance') ? 'required' : ''
+        ],[
+            'Expediteur.required' => 'يرجى تقديم معلومات المرسل.',
+            'CorrespondanceRequiertReponse.required' => 'يرجى تحديد ما إذا كانت المراسلة تتطلب الرد أم لا.',
+            'SujetCorrespondance.required' => 'يرجى تحديد موضوع المراسلة.',
+            'TelechargementCorrespondance.required' => 'يرجى تحميل المراسلة.',     
+    ]);
+        if($request->hasFile('TelechargementCorrespondance')){
+            $fileName=Str::random(2).'_'.$request->file('TelechargementCorrespondance')->getClientOriginalName();
+            $data['TelechargementCorrespondance']=$request->file('TelechargementCorrespondance')->storeAs('courrierEntrant',$fileName,'public');
+        }
+        $data['Reference']=$request['Reference'];
+        $data['NumeroInscriptionAcademie']=$request['NumeroInscriptionAcademie'];
+        $data['DateInscriptionAcademie']=$request['DateInscriptionAcademie'];
+        $data['DateEnvoiEntiteExpeditrice']=$request['DateEnvoiEntiteExpeditrice'];
+        $data['NumeroEnvoiEntiteExpeditrice']=$request['NumeroEnvoiEntiteExpeditrice'];
+        $data['Repondu']=$request['Repondu'];
+        $data['DernierDelaiReponse']=$request['DernierDelaiReponse'];
+        $data['Statut']=$request['Statut'];
+        $data['user_id']=5;
+
+        $archiveEntrant->update($data);
+        return redirect()->route('archive_entrants.index')->with('success','تم تعديل البريد بنجاح');
     }
 
     /**
@@ -60,6 +89,7 @@ class ArchiveEntrantController extends Controller
      */
     public function destroy(ArchiveEntrant $archiveEntrant)
     {
-        //
+        $archiveEntrant->delete();
+        return back()->with('danger','تم مسح البريد بنجاح.');
     }
 }

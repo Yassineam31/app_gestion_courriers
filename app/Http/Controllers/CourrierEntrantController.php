@@ -85,7 +85,7 @@ class CourrierEntrantController extends Controller
             'Expediteur'=>'required',
             'CorrespondanceRequiertReponse'=>'required',
             'SujetCorrespondance'=>'required',
-            'TelechargementCorrespondance'=>'required'
+            'TelechargementCorrespondance'=>$request->hasFile('TelechargementCorrespondance') ? 'required' : ''
         ],[
             'Expediteur.required' => 'يرجى تقديم معلومات المرسل.',
             'CorrespondanceRequiertReponse.required' => 'يرجى تحديد ما إذا كانت المراسلة تتطلب الرد أم لا.',
@@ -116,6 +116,6 @@ class CourrierEntrantController extends Controller
     public function destroy(CourrierEntrant $courrierEntrant)
     {
         $courrierEntrant->delete();
-        return back()->with('danger','Le courrier est supprimé avec succés.');
+        return back()->with('danger','تم مسح البريد بنجاح.');
     }
 }

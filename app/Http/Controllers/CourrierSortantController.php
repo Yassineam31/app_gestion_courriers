@@ -82,7 +82,7 @@ class CourrierSortantController extends Controller
             'Destinataire'=>'required',
             'CorrespondanceRequiertReponse'=>'required',
             'ObjetCorrespondance'=>'required',
-            'TelechargementCorrespondance'=>'required'
+            'TelechargementCorrespondance'=>$request->hasFile('TelechargementCorrespondance') ? 'required' : ''
         ],[
             'Destinataire.required' => ' يرجى تقديم معلومات المرسل إليه.',
             'CorrespondanceRequiertReponse.required' =>'يرجى تحديد ما إذا كانت المراسلة تتطلب الرد أم لا.',
@@ -110,6 +110,6 @@ class CourrierSortantController extends Controller
     public function destroy(CourrierSortant $courrierSortant)
     {
         $courrierSortant->delete();
-        return back()->with('danger','تمت إزالة البريد بنجاح');
+        return back()->with('danger','تم مسح البريد بنجاح');
     }
 }
