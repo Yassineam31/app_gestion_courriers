@@ -57,7 +57,7 @@ class CourrierEntrantController extends Controller
             $data['user_id']=5;
 
         $post=CourrierEntrant::create($data);
-        return redirect()->route('courrier_entrants.index')->with('success','تمت إظافة البريد بنجاح');
+        return redirect()->route('courrier_entrants.index')->with('succes','تمت إظافة البريد بنجاح');
     }
 
     /**
@@ -116,6 +116,6 @@ class CourrierEntrantController extends Controller
     public function destroy(CourrierEntrant $courrierEntrant)
     {
         $courrierEntrant->delete();
-        return back()->with('danger','تم مسح البريد بنجاح.');
+        return back()->with('danger','تم حذف البريد بنجاح');
     }
 }

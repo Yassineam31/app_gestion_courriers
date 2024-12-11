@@ -34,7 +34,7 @@
                     <a href="{{route('restoreOutgoing',$archive_sortant->id)}}" title='إرجاع إلى قائمة البريد الصادر'><i class="fa-solid fa-rotate-left"></i></a>
                     |<a href="{{route('archive_sortants.edit',$archive_sortant->id)}}" title='تعديل'><i class="fa-solid fa-pen-to-square" style="margin-right:2px;"></i></a><br>
                     <a href="{{route('archive_sortants.show',$archive_sortant->id)}}" title='إظهار'> <i class="fa-solid fa-eye"></i></a>
-                    | <button id="openModalBtn{{$archive_sortant->id}}" title='مسح'><i class="fa-solid fa-trash"></i></button>
+                    | <button id="openModalBtn{{$archive_sortant->id}}" title='حذف'><i class="fa-solid fa-trash"></i></button>
                 </td>
             </tr>
                 <!-- The Modal -->

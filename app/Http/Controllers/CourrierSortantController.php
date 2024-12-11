@@ -54,7 +54,7 @@ class CourrierSortantController extends Controller
         $data['Statut']=$request['Statut'];
         $data['user_id']=5;
         $post=CourrierSortant::create($data);
-        return redirect()->route('courrier_sortants.index')->with('success','تمت إضافة البريد بنجاح');
+        return redirect()->route('courrier_sortants.index')->with('succes','تمت إضافة البريد بنجاح');
     }
 
     /**
@@ -110,6 +110,6 @@ class CourrierSortantController extends Controller
     public function destroy(CourrierSortant $courrierSortant)
     {
         $courrierSortant->delete();
-        return back()->with('danger','تم مسح البريد بنجاح');
+        return back()->with('danger','تم حذف البريد بنجاح');
     }
 }

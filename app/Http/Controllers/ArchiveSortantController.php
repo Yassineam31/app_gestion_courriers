@@ -87,6 +87,6 @@ class ArchiveSortantController extends Controller
     public function destroy(ArchiveSortant $archiveSortant)
     {
         $archiveSortant->delete();
-        return back()->with('danger','تم مسح البريد بنجاح');
+        return back()->with('danger','تم حذف البريد بنجاح');
     }
 }

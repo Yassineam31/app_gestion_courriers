@@ -90,6 +90,6 @@ class ArchiveEntrantController extends Controller
     public function destroy(ArchiveEntrant $archiveEntrant)
     {
         $archiveEntrant->delete();
-        return back()->with('danger','تم مسح البريد بنجاح.');
+        return back()->with('danger','تم حذف البريد بنجاح');
     }
 }

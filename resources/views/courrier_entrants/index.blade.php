@@ -32,10 +32,10 @@
             <td style="max-width: 200px; word-wrap: break-word;">{{$courrier_entrant->SujetCorrespondance}}</td>
             <td>{{$courrier_entrant->Statut}}</td>
             <td>
-                <a href="{{route('archiveIncoming',$courrier_entrant->id)}}" title='أرشفة'><i class="fa-solid fa-inbox"></i></a>
+                <a href="{{route('archiveIncoming',$courrier_entrant->id)}}" title='إضافة البريد إلى الأرشيف'><i class="fa-solid fa-inbox"></i></a>
                |<a href="{{route('courrier_entrants.edit',$courrier_entrant->id)}}" title='تعديل'><i class="fa-solid fa-pen-to-square"></i></a><br>
                 <a href="{{route('courrier_entrants.show',$courrier_entrant->id)}}" title='إظهار'><i class="fa-solid fa-eye"></i></a>
-               | <button id="openModalBtn{{$courrier_entrant->id}}" title='مسح'><i class="fa-solid fa-trash"></i></button>
+               | <button id="openModalBtn{{$courrier_entrant->id}}" title='حذف'><i class="fa-solid fa-trash"></i></button>
             </td>       
         </tr>
                 <!-- The Modal -->

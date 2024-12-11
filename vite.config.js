@@ -15,6 +15,7 @@ export default defineConfig({
                 'resources/css/show.css',
                 'resources/js/app.js',
                 'resources/js/sideBar.js',
+                'resources/js/alerts.js',
                 
                 ],
             refresh: true,
