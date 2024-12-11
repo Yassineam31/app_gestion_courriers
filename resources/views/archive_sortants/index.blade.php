@@ -5,9 +5,9 @@
         <tr>
             <td colspan='7' style="background-color: #353b49;">
                 <div class="d-flex" style="position:relative;height:54px;">
-                    <form action="" method="post">
+                    <form action="{{route('searchArchiveSortant')}}" method="post">
                         @csrf
-                        <input type="search" dir="rtl" placeholder="بحث..." class="form-control m-2 search" style="width: 150px;">
+                        <input type="search" id="searchInput" name='query' dir="rtl" placeholder="بحث..." class="form-control m-2 search" style="width: 150px;">
                     </form>
                     <h4 class='courrier'>أرشيف البريد الصادر</h4>
                 </div>

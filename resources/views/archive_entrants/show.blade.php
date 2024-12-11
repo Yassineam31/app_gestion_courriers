@@ -36,7 +36,7 @@
                         <p class="card-text"><span>تم الرد عليها :</span> {{ $archiveEntrant->Repondu }}</p>
                         <p class="card-text"><span>آخر أجل للرد :</span> {{ $archiveEntrant->DernierDelaiReponse }}</p>
                         <p class="card-text"><span>الحالة :</span> {{ $archiveEntrant->Statut }}</p>
-                        <p class="card-text"><span>المرفقات :</span>
+                        <p class="card-text" id='pieces_jointes'><span>المرفقات :</span>
                             <a href="{{ asset('storage/'.$archiveEntrant->TelechargementCorrespondance) }}" download="{{basename($archiveEntrant->TelechargementCorrespondance)}}" style="text-decoration:none;"> 
                                 <i class="fa-solid fa-download"></i>
                                 <i style="margin-left:10px; font-size:13px;color:black">{{ basename($archiveEntrant->TelechargementCorrespondance) }}</i>

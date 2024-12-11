@@ -6,9 +6,9 @@
             <td colspan='7' style="background-color: #353b49;">
                 <div class="d-flex" style="position:relative;">
                     <button class="btn ajouter"><a href="{{route('courrier_entrants.create')}}" style="text-decoration:none;color:#000;font-weight:500;"><i class="fa-solid fa-circle-plus"></i>إضافة بريد</a></button>
-                    <form action="" method="post">
+                    <form action="{{route('searchEntrant')}}" method="post">
                         @csrf
-                        <input type="search" dir="rtl" placeholder="بحث..." class="form-control m-2 search" style="width: 150px;">
+                        <input type="search" id="searchInput" name='query' dir="rtl" placeholder="بحث..." class="form-control m-2 search" style="width: 150px;">
                     </form>
                     <h4 class='courrier'>البريد الوارد</h4>
                 </div>

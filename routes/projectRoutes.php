@@ -31,4 +31,7 @@ Route::get('/archiverCourrierSortant/{id}',[ExtraController::class,'archiverCour
 Route::get('/archives',[ExtraController::class,'pageArchives'])->name('archivePage');
 Route::get('/restaureArchiveEntrant/{id}',[ExtraController::class,'restaureArchiveEntrant'])->name('restoreIncoming');
 Route::get('/restaureArchiveSortant/{id}',[ExtraController::class,'restaureArchiveSortant'])->name('restoreOutgoing');
-
+Route::post('/searchCourrierEntrant',[ExtraController::class, 'searchEntrant'])->name('searchEntrant');
+Route::post('/searchArchiveEntrant',[ExtraController::class, 'searchArchiveEntrant'])->name('searchArchiveEntrant');
+Route::post('/searchCourrierSortant',[ExtraController::class, 'searchSortant'])->name('searchSortant');
+Route::post('/searchArchiveSortant',[ExtraController::class, 'searchArchiveSortant'])->name('searchArchiveSortant');

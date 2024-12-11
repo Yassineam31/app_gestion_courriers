@@ -23,7 +23,7 @@ h1{
         h1{
              display: block;
         }
-        .fa-download{
+        #pieces_jointes{
             display: none;
         }
     }
