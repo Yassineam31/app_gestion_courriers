@@ -1,10 +1,10 @@
 setTimeout(() => {
     let alert = document.querySelector('.alert');
     if (alert) {
-        alert.style.transition = 'opacity 0.5s ease-out'; // Ajoute une transition pour l'opacité
-        alert.style.opacity = 0; // Débute la disparition progressive
+        alert.style.transition = 'opacity 0.5s ease-out'; 
+        alert.style.opacity = 0;
         setTimeout(() => {
-            alert.style.display = 'none'; // Cache complètement après la transition
-        }, 500); // Délai correspondant à la durée de la transition
+            alert.style.display = 'none'; 
+        }, 500); 
     }
-}, 500); // Délai initial avant de commencer la transition
+}, 500);

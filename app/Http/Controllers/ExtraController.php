@@ -44,7 +44,7 @@ class ExtraController extends Controller
         CourrierEntrant::create($archiveEntrant->toArray());
         $archiveEntrant->delete();  
     });
-        return back()->with('success', 'تم إرجاع البريد بنجاح');
+        return back()->with('success', 'تم إرجاع البريد إلى القائمة بنجاح');
     }
 
     public function restaureArchiveSortant($id){
@@ -53,7 +53,7 @@ class ExtraController extends Controller
         CourrierSortant::create($archiveSortant->toArray());
         $archiveSortant->delete();  
     });
-        return back()->with('success', 'تم إرجاع البريد بنجاح');
+        return back()->with('success', 'تم إرجاع البريد إلى القائمة بنجاح');
     }
 
     public function searchEntrant(Request $request){
