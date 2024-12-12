@@ -20,7 +20,7 @@ use App\Http\Controllers\ExtraController;
 |
 */
 
-Route::get('/dasboard',DashboardController::class)->name('dashboard');
+Route::get('/dashboard1',DashboardController::class)->name('dashboard1');
 Route::resource('/users',UserController::class);
 Route::resource('/courrier_entrants',CourrierEntrantController::class);
 Route::resource('/archive_entrants',ArchiveEntrantController::class);
