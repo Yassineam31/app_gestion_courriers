@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ArchiveSortant;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\pagination\paginator;
@@ -14,7 +15,8 @@ class ArchiveSortantController extends Controller
      */
     public function index()
     {
-        $archive_sortants = ArchiveSortant::orderBy('created_at', 'desc')->paginate(5);
+        $user=Auth::user();
+        $archive_sortants = $user->archiveSortants()->orderBy('created_at', 'desc')->paginate(5);
         return view('archive_sortants.index',compact('archive_sortants'));
     }
 
@@ -76,7 +78,7 @@ class ArchiveSortantController extends Controller
         $data['DernierDelaiReceptionReponse']=$request['DernierDelaiReceptionReponse'];
         $data['ReponseRecue']=$request['ReponseRecue'];
         $data['Statut']=$request['Statut'];
-        $data['user_id']=5;
+        $data['user_id']=Auth::id();
         $archiveSortant->update($data);
         return redirect()->route('archive_sortants.index')->with('success','تم تعديل البريد بنجاح');
     }
@@ -87,6 +89,10 @@ class ArchiveSortantController extends Controller
     public function destroy(ArchiveSortant $archiveSortant)
     {
         $archiveSortant->delete();
-        return back()->with('danger','تم حذف البريد بنجاح');
+        if (request()->header('X-Requested-With') == 'XMLHttpRequest') {
+            return response()->json(['message' => 'تم حذف البريد بنجاح.'], 200);
+        }
+            // Si ce n'est pas une requête AJAX, retournez une redirection avec un message flash
+            return redirect()->route('archive_sortants.index')->with('danger', 'تم حذف البريد بنجاح');  
     }
 }

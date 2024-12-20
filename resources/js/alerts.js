@@ -5,6 +5,7 @@ setTimeout(() => {
         alert.style.opacity = 0;
         setTimeout(() => {
             alert.style.display = 'none'; 
+            window.location.reload();
         }, 500); 
     }
 }, 500);

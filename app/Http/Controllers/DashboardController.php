@@ -19,6 +19,6 @@ class DashboardController extends Controller
          $currentDate = Carbon::now()->translatedFormat('l j F Y');
  
          // Passer la date formatée à la vue
-         return view('dashboard1', compact('currentDate'));
+         return view('dashboard', compact('currentDate'));
     }
 }

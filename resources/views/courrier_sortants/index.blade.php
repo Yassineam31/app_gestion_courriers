@@ -6,10 +6,7 @@
             <td colspan='7' style="background-color: #353b49;">
                 <div class="d-flex" style="position:relative;">
                     <button class="btn ajouter"><a href="{{route('courrier_sortants.create')}}" style="text-decoration:none;color:#000;font-weight:500;"><i class="fa-solid fa-circle-plus"></i>إضافة بريد</a></button>
-                    <form action="{{route('searchSortant')}}" method="post">
-                        @csrf
-                        <input type="search" id="searchInput" name='query' dir="rtl" placeholder="بحث..." class="form-control m-2 search" style="width: 150px;">
-                    </form>
+                    <input type="search" id="searchInput" name='query' dir="rtl" placeholder="بحث..." class="form-control m-2 search" style="width: 150px;">
                     <h4 class='courrier'>البريد الصادر</h4>
                 </div>
             </td>
@@ -23,6 +20,7 @@
             <th>الحالة</th>
             <th>الإجراء</th>
         </tr>
+        <tbody id="tableBody">
         @forelse($courrier_sortants as $courrier_sortant)
             <tr>
                 <td>{{$courrier_sortant->Reference}}</td>
@@ -94,8 +92,115 @@
                 <td colspan=7 class='text-center'><b>لا يوجد بريد</b></td>
             </tr>
         @endforelse
+        </tbody>
     </table>
     <div dir='ltr' class="pagination-centered">
         {{ $courrier_sortants->links() }}
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const tableBody = document.getElementById('tableBody');
+        const footer=document.getElementById('footer');
+
+        // Gestion de la recherche
+        searchInput.addEventListener('input', function () {
+            const query = this.value.trim();
+            searchCourriers(query);
+            footer.style.display='none';
+        });
+        
+        // Gestion des clics dans la table (pour suppression)
+        tableBody.addEventListener('click', function (event) {
+            const deleteBtn = event.target.closest('.delete-btn');
+            if (deleteBtn) {
+                const id = deleteBtn.getAttribute('data-id');
+                if (confirm('هل تريد حذف هذا البريد؟')) {
+                    deleteCourrier(id, deleteBtn);
+                }
+            }
+        });
+
+        // Fonction pour effectuer une recherche
+        function searchCourriers(query) {
+            fetch("{{ route('searchSortant') }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                body: JSON.stringify({ query }),
+            })
+                .then(response => response.json())
+                .then(data => updateTable(data))
+                .catch(error => console.error('Erreur lors de la recherche :', error));
+        }
+
+        // Fonction pour mettre à jour le tableau des résultats
+        function updateTable(data) {
+            tableBody.innerHTML = '';
+            if (data.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = "<td colspan='7' class='text-center'><b>لا يوجد بريد</b></td>";
+                tableBody.appendChild(row);
+            } else {
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.Reference}</td>
+                        <td>${item.Destinataire}</td>
+                        <td>${item.NumeroEnvoiAcademie}</td>
+                        <td>${item.DateEnvoiAcademie}</td>
+                        <td style="max-width: 200px; word-wrap: break-word;">${item.ObjetCorrespondance}</td>
+                        <td>${item.Statut}</td>
+                        <td>
+                            <a href="/archiverCourrierSortant/${item.id}" title='إضافة البريد إلى الأرشيف' style="text-decoration:none;">
+                                <i class="fa-solid fa-inbox"></i>
+                            </a> |
+                            <a href="/courrier_sortants/${item.id}/edit" title='تعديل' style="text-decoration:none;">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a><br>
+                            <a href="/courrier_sortants/${item.id}" title='إظهار' style="text-decoration:none;">
+                                <i class="fa-solid fa-eye"></i>
+                            </a> |
+                            <a href="#" class="delete-btn" data-id="${item.id}" title="حذف" style="text-decoration:none;">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+        }
+
+        // Fonction pour supprimer un courrier
+        function deleteCourrier(id, deleteBtn) {
+        fetch(`/courrier_sortants/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json(); // Récupérer la réponse JSON si la suppression est réussie
+            } else {
+                // Gestion des erreurs si le statut HTTP n'est pas 200 ou 204
+                return response.json().then(errorData => {
+                    throw new Error(errorData.message || 'خطأ أثناء الحذف.');
+                });
+            }
+        })
+        .then(data => {
+            alert(data.message); // Afficher l'alerte de succès
+            deleteBtn.closest('tr').remove(); // Supprimer la ligne du tableau
+        })
+        .catch(error => {
+            console.error('Erreur lors de la suppression :', error);
+            alert('لم يتم الحذف. حاول مرة أخرى.'); // Afficher l'alerte d'erreur si quelque chose échoue
+        });
+    }
+    });
+    </script>
 @endsection

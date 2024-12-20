@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CourrierEntrant;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\pagination\paginator;
@@ -14,7 +15,8 @@ class CourrierEntrantController extends Controller
      */
     public function index()
     {
-        $courrier_entrants=CourrierEntrant::orderBy('created_at','desc')->paginate(5);
+        $user=Auth::user();
+        $courrier_entrants=$user->courrierEntrants()->orderBy('created_at','desc')->paginate(5);
         return view('courrier_entrants.index',compact('courrier_entrants'));
     }
 
@@ -54,7 +56,7 @@ class CourrierEntrantController extends Controller
             $data['Repondu']=$request['Repondu'];
             $data['DernierDelaiReponse']=$request['DernierDelaiReponse'];
             $data['Statut']=$request['Statut'];
-            $data['user_id']=5;
+            $data['user_id']=Auth::id();
 
         $post=CourrierEntrant::create($data);
         return redirect()->route('courrier_entrants.index')->with('succes','تمت إظافة البريد بنجاح');
@@ -104,7 +106,7 @@ class CourrierEntrantController extends Controller
         $data['Repondu']=$request['Repondu'];
         $data['DernierDelaiReponse']=$request['DernierDelaiReponse'];
         $data['Statut']=$request['Statut'];
-        $data['user_id']=5;
+        $data['user_id']=Auth::id();
 
         $courrierEntrant->update($data);
         return redirect()->route('courrier_entrants.index')->with('success','تم تعديل البريد بنجاح');
@@ -113,9 +115,13 @@ class CourrierEntrantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CourrierEntrant $courrierEntrant)
-    {
+    public function destroy(CourrierEntrant $courrierEntrant){
         $courrierEntrant->delete();
-        return back()->with('danger','تم حذف البريد بنجاح');
+        // Vérifier si la requête est AJAX
+        if (request()->header('X-Requested-With') == 'XMLHttpRequest') {
+            return response()->json(['message' => 'تم حذف البريد بنجاح.'], 200);
+        }
+            // Si ce n'est pas une requête AJAX, retournez une redirection avec un message flash
+            return redirect()->route('courrier_entrants.index')->with('danger', 'تم حذف البريد بنجاح');  
     }
 }
