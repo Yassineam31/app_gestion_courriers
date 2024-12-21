@@ -1,4 +1,11 @@
 <x-guest-layout>
+<div style='height:35px;'>
+            @if(session('success'))
+                <div class="alert alert-success text-center m-auto" style='width:350px;'>
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
     <form method="POST" action="{{ route('register') }}" class="w-full max-w-lg mx-auto">
         @csrf
 
@@ -87,11 +94,15 @@
         <div class="mb-4">
             <label for="password_confirmation" class="block text-right text-sm font-medium text-gray-700"><span class="text-red-600">*</span>{{ __('إعادة كلمة المرور') }}</label>
             <input id="password_confirmation" dir="rtl" type="password" name="password_confirmation" required autocomplete="new-password" class="mt-1 p-2 block w-full border border-gray-300 rounded-md">
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
             <button type="submit" class="ml-4 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">{{ __('تسجيل') }}</button>
         </div>
     </form>
+    <div class="users text-center mt-3">
+        <a href="/dashboard" style='color:blue;'>الرئيسية</a> | <a href="/gestionMembres" style='color:blue;'>تدبير الأعضاء</a>
+    </div>
+    @vite('resources/js/alerts.js')
 </x-guest-layout>

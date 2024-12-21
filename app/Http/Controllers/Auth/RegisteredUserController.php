@@ -30,22 +30,33 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $emailRules = [
+            'required', 
+            'string', 
+            'lowercase', 
+            'email', 
+            'max:255',
+            function ($attribute, $value, $fail) {
+                if (!preg_match('/@(taalim\.ma|men\.gov\.ma)$/', $value)) {
+                    $fail(" فقط @taalim.ma أو @men.gov.maيجب أن يتضمن البريد الإلكتروني   ");
+                }
+            },
+            function ($attribute, $value, $fail) {
+                if (User::where('email', $value)->exists()) {
+                    $fail('هذا البريد الإلكتروني مستخدم بالفعل');
+                }
+            },
+        ];
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255','unique:'.User::class,
-                function ($attribute, $value, $fail) {
-                    if (!preg_match('/@(taalim\.ma|men\.gov\.ma)$/', $value)) {
-                        $fail(" @taalim.ma أو @men.gov.maيجب أن يتضمن البريد الإلكتروني فقط  ");
-                    }
-                },],
+            'email' => $emailRules,
             'password' => [
                 'required',
-                'confirmed',
                 function ($attribute, $value, $fail) {
                     if (strlen($value) < 8) {
                         $fail('يجب أن تحتوي كلمة المرور على الأقل على 8 أحرف.');
                     } else if ($value !== request()->input('password_confirmation')) {
-                        $fail('لا يتطابق حقل تأكيد كلمة المرور.');
+                        $fail('كلمات المرور غير متطابقة');
                     }
                 },],  
             'division' => ['required', 'string', 'max:255'],
@@ -62,6 +73,6 @@ class RegisteredUserController extends Controller
             'poste' => $request->poste,
         ]);
         event(new Registered($user));
-        return redirect('/login');
+        return back()->with('success','تم إضافة الحساب بنجاح');
     }
 }
