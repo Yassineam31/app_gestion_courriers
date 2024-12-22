@@ -9,6 +9,7 @@ use App\Models\CourrierEntrant;
 use App\Models\CourrierSortant;
 use App\Models\ArchiveEntrant;
 use App\Models\ArchiveSortant;
+use App\Models\User;
 use Illuminate\pagination\paginator;
 
 class ExtraController extends Controller
@@ -128,6 +129,19 @@ class ExtraController extends Controller
             ->orWhere('DernierDelaiReceptionReponse', 'LIKE', "%{$query}%")
             ->orWhere('Statut', 'LIKE', "%{$query}%");
         })
+            ->get();
+        return response()->json($results);
+    }
+
+    public function searchUser(Request $request){
+        $query = $request->input('query');
+
+        $results = User::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('email', 'LIKE', "%{$query}%")
+            ->orWhere('division', 'LIKE', "%{$query}%")
+            ->orWhere('services', 'LIKE', "%{$query}%")
+            ->orWhere('poste', 'LIKE', "%{$query}%")
+            ->orWhere('services', 'LIKE', "%{$query}%")
             ->get();
         return response()->json($results);
     }

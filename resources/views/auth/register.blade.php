@@ -55,7 +55,7 @@
          <!-- Services -->
          <div class="mb-4">
             <label for="services" class="block text-right text-sm font-medium text-gray-700">{{ __('المصلحة') }}</label>
-            <select id="services" name="services" class="mt-1 block w-full border border-gray-300 rounded-md p-2" dir="rtl">
+            <select id="services" name="services" class="block w-full border border-gray-300 rounded-md p-2" dir="rtl">
                 <option value=""></option>
                 <option value="مصلحة التواصل وتتبع أشغال المجلس الإداري">مصلحة التواصل وتتبع أشغال المجلس الإداري</option>
                 <option value="مصلحة الشؤون القانونية والشراكة">مصلحة الشؤون القانونية والشراكة</option>
@@ -102,7 +102,7 @@
         </div>
     </form>
     <div class="users text-center mt-3">
-        <a href="/dashboard" style='color:blue;'>الرئيسية</a> | <a href="/gestionMembres" style='color:blue;'>تدبير الأعضاء</a>
+        <a href="/dashboard" style='color:blue;'>الرئيسية</a> | <a href="/users" style='color:blue;'>تدبير الأعضاء</a>
     </div>
     @vite('resources/js/alerts.js')
 </x-guest-layout>

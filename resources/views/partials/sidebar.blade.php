@@ -26,7 +26,7 @@
                 <a href="/notifications" class="link"><i class="fa-solid fa-bell" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">تنبيهات</span></a>
                 <a href="/recherche" class="link"><i class="fa-solid fa-magnifying-glass" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">بحث</span></a>
                 <a href="/membres" class="link"><i class="fa-solid fa-user-group" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">أعضاء القسم</span></a>
-                <a href="/gestionMembres" class="link"><i class="fa-solid fa-people-group" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">تدبير الأعضاء </span></a>
+                <a href="/users" class="link"><i class="fa-solid fa-people-group" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">تدبير الأعضاء </span></a>
             </div>
         </div>
 @endonce

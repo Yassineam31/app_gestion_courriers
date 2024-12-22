@@ -34,4 +34,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/searchArchiveEntrant',[ExtraController::class, 'searchArchiveEntrant'])->name('searchArchiveEntrant');
     Route::post('/searchCourrierSortant',[ExtraController::class, 'searchSortant'])->name('searchSortant');
     Route::post('/searchArchiveSortant',[ExtraController::class, 'searchArchiveSortant'])->name('searchArchiveSortant');
+    Route::post('/searchUser',[ExtraController::class, 'searchUser'])->name('searchUser');
 });
