@@ -1,9 +1,14 @@
-.dashboard {
+.G1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    height: 500px;
+    margin-top: 50px;
+    height: 240px;
+  }
+  .G2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .button {
@@ -12,7 +17,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    margin: 23px 15px;
+    margin:0 15px;
     font-size: 22px;
     border: none;
     border-radius: 5px;
@@ -40,11 +45,6 @@
   }
   
   .membres {
-    background-color: #fafafa;
-    color: #2d2d2d;
-  }
-  
-  .rechercher {
     background-color: #fafafa;
     color: #2d2d2d;
   }

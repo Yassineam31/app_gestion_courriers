@@ -21,6 +21,7 @@ use App\Http\Controllers\ExtraController;
 
 Route::middleware('auth')->group(function () {
     Route::resource('/users',UserController::class);
+    Route::get('/contact_section',[UserController::class,'contactSectionIndex'])->name('contactSection');
     Route::resource('/courrier_entrants',CourrierEntrantController::class);
     Route::resource('/archive_entrants',ArchiveEntrantController::class);
     Route::resource('/courrier_sortants',CourrierSortantController::class);

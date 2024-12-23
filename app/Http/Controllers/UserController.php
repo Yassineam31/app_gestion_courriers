@@ -100,5 +100,21 @@ class UserController extends Controller
             // Si ce n'est pas une requête AJAX, retournez une redirection avec un message flash
             return redirect()->route('users.index')->with('danger', 'تم حذف البريد بنجاح');  
     }
+
+    public function contactSectionIndex(User $user)
+    {
+        $user = auth()->user();
+        $users=User::where(function ($query) {
+            $query->where('poste', 'مدير')
+                ->orWhere('poste', 'رئيس القسم');
+            })
+            ->orWhere('division', 'مكتب الضبط')
+            ->orWhere('division', 'الكتابة الخاصة للسيد المدير')
+            ->get();
+        $members = User::where('division', $user->division)
+            ->orderBy('services')
+            ->get();
+        return view('users.contactSection',compact('users','members'));
+    }
     
 }

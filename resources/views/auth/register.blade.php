@@ -28,7 +28,7 @@
             <label for="division" class="block text-right text-sm font-medium text-gray-700"><span class="text-red-600">*</span>{{ __('القسم') }}</label>
             <select id="division" dir="rtl" name="division" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
                 <option value=""></option>
-                <option value="المدير">المدير</option>
+                <option value="الإدارة">الإدارة</option>
                 <option value="الكتابة الخاصة للسيد المدير">الكتابة الخاصة للسيد المدير</option>
                 <option value="مكتب الضبط">مكتب الضبط</option>
                 <option value="قسم الشؤون الإدارية والمالية">قسم الشؤون الإدارية والمالية</option>

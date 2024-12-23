@@ -21,28 +21,21 @@
                 <i class="fa-solid fa-inbox" style='font-size:30px;'></i>
                 البريد الوارد
             </a>
-            <a href="" class="button membres" style='text-decoration:none;color:black;'>
-                <i class="fa-solid fa-user-group" style='font-size:30px;'></i>
-                أعضاء القسم
-            </a>
-          </div>
-          <div class="G2">
             <a href="{{route('courrier_sortants.index')}}" class="button courrierSortant" style='text-decoration:none;color:black;'>
                 <i class="fa-regular fa-envelope" style='font-size:30px;'></i>
                 البريد الصادر
-            </a>
-            <a href="" class="button rechercher" style='text-decoration:none;color:black;'>
-                 <i class="fa-solid fa-magnifying-glass" style='font-size:30px;'></i>
-                 بحـث
-            </a>
-                  
-          </div>
-          <div class="G3">
+            </a> 
             <a href="{{route('archivePage')}}" class="button archive" style='text-decoration:none;color:black;'>
                 <i class="fa-solid fa-box-archive" style='font-size:30px;'></i>
                  الأرشـيف
             </a>
-            <a href="" class="button notifications" style='text-decoration:none;color:black;'>
+          </div>
+          <div class="G2">
+            <a href="{{route('contactSection')}}" class="button membres" style='text-decoration:none;color:black;'>
+                  <i class="fa-solid fa-user-group" style='font-size:30px;'></i>
+                   قسم التواصل
+              </a>
+              <a href="" class="button notifications" style='text-decoration:none;color:black;'>
                 <i class="fa-solid fa-bell" style='font-size:30px;'></i>
                  تنبيهـــات
             </a>

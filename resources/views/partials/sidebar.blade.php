@@ -19,14 +19,13 @@
             </div>
             {{-- Liens du menu --}}
             <div class="menu">
-                <a href="/dashboard" class="link"><i class="fa fa-th" style='font-size:23px;margin-right:5px;'></i> <span class="link_text">الرئيسية</span></a>
-                <a href="/courrier_entrants" class="link"><i class="fa-solid fa-envelope-open" style='font-size:23px;margin-right:5px;'></i> <span class="link_text">البريد الوارد</span></a>
-                <a href="/courrier_sortants" class="link"><i class="fa-solid fa-paper-plane" style='font-size:23px;margin-right:5px;'></i> <span class="link_text">البريد الصادر</span></a>
-                <a href="/archives" class="link"><i class="fa-solid fa-box-archive" style='font-size:23px; margin-right:5px;'></i><span class="link_text">الأرشيف</span></a>
-                <a href="/notifications" class="link"><i class="fa-solid fa-bell" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">تنبيهات</span></a>
-                <a href="/recherche" class="link"><i class="fa-solid fa-magnifying-glass" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">بحث</span></a>
-                <a href="/membres" class="link"><i class="fa-solid fa-user-group" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">أعضاء القسم</span></a>
-                <a href="/users" class="link"><i class="fa-solid fa-people-group" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">تدبير الأعضاء </span></a>
+                <a href="/dashboard" class="link" title="الرئيسية"><i class="fa fa-th" style='font-size:23px;margin-right:5px;'></i> <span class="link_text">الرئيسية</span></a>
+                <a href="/courrier_entrants" class="link" title="البريد الوارد"><i class="fa-solid fa-envelope-open" style='font-size:23px;margin-right:5px;'></i> <span class="link_text">البريد الوارد</span></a>
+                <a href="/courrier_sortants" class="link" title="البريد الصادر"><i class="fa-solid fa-paper-plane" style='font-size:23px;margin-right:5px;'></i> <span class="link_text">البريد الصادر</span></a>
+                <a href="/archives" class="link" title="الأرشيف"><i class="fa-solid fa-box-archive" style='font-size:23px; margin-right:5px;'></i><span class="link_text">الأرشيف</span></a>
+                <a href="/notifications" class="link" title="تنبيهات"><i class="fa-solid fa-bell" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">تنبيهات</span></a>
+                <a href="/contact_section" class="link" title="قسم التواصل"><i class="fa-solid fa-user-group" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">قسم التواصل</span></a>
+                <a href="/users" class="link" title="تدبير الأعضاء"><i class="fa-solid fa-people-group" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">تدبير الأعضاء </span></a>
             </div>
         </div>
 @endonce
