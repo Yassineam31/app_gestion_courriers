@@ -101,13 +101,11 @@
         document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.getElementById('searchInput');
         const tableBody = document.getElementById('tableBody');
-        const footer=document.getElementById('footer');
 
         // Gestion de la recherche
         searchInput.addEventListener('input', function () {
             const query = this.value.trim();
             searchCourriers(query);
-            footer.style.display='none';
         });
         
         // Gestion des clics dans la table (pour suppression)

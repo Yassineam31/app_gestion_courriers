@@ -43,7 +43,11 @@
         </div>
       </div>
     </div>
-    @include('partials.footer')
+    {{--Footer--}} 
+        <footer class="bg-dark text-white text-center py-4 w-100" dir='ltr' id='footer' style='position:fixed;bottom:0;height:80px;'>
+            <p class="mb-1">الأكاديمية الجهوية للتربية والتكوين – جهة كلميم واد نون</p>
+            <p>&copy; 2025</p>
+        </footer>
 </x-app-layout>
 </body>
 </html>

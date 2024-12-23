@@ -29,7 +29,6 @@
                 <td>{{$user->poste}}</td>
                 <td class='p-3'>
                 <a href="{{route('users.edit',$user->id)}}" title='تعديل'><i class="fa-solid fa-pen-to-square"></i></a>
-                | <a href="" title='رسالة'><i class="fa-solid fa-comment-dots" style="color:silver;"></i></a>
                 | <button id="openModalBtn{{$user->id}}" title='حذف'><i class="fa-solid fa-trash"></i></button>
                 </td>       
             </tr>
@@ -84,13 +83,11 @@
         document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.getElementById('searchInput');
         const tableBody = document.getElementById('tableBody');
-        const footer=document.getElementById('footer');
 
         // Gestion de la recherche
         searchInput.addEventListener('input', function () {
             const query = this.value.trim();
             searchUsers(query);
-            footer.style.display='none';
         });
         
         // Gestion des clics dans la table (pour suppression)
@@ -138,9 +135,6 @@
                         <td>
                             <a href="/users/${item.id}/edit" title='تعديل' style="text-decoration:none;">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                            </a> |
-                            <a href="/users/${item.id}" title='رسالة' style="text-decoration:none;">
-                                <i class="fa-solid fa-comment-dots" style="color:silver;"></i>
                             </a> |
                             <a href="#" class="delete-btn" data-id="${item.id}" title="حذف" style="text-decoration:none;">
                                 <i class="fa-solid fa-trash"></i>

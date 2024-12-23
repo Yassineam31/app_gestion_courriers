@@ -18,4 +18,7 @@
         {{-- Contenu principal --}}
             @yield('main-content')
     </div>
+        @vite(['resources/js/sideBar.js','resources/js/alerts.js'])
+</body>
+</html> 
 @endonce

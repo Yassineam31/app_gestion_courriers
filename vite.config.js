@@ -8,7 +8,6 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/css/dashboard.css',
                 'resources/css/sideBar.css',
-                'resources/css/footer.css',
                 'resources/css/courrierIndex.css',
                 'resources/css/formEntrant.css',
                 'resources/css/formSortant.css',
