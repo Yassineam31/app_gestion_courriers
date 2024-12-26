@@ -13,6 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('gestion_utilisateurs',User::class);
         $users=User::orderBy('created_at','desc')->paginate(5);
         return view('users.index',compact('users'));
     }
@@ -106,10 +107,10 @@ class UserController extends Controller
         $user = auth()->user();
         $users=User::where(function ($query) {
             $query->where('poste', 'مدير')
-                ->orWhere('poste', 'رئيس القسم');
+                ->orWhere('poste', 'رئيس القسم')
+                ->orWhere('poste', 'كاتب عام')
+                ->orWhere('poste', 'رئيس مكتب الضبط');
             })
-            ->orWhere('division', 'مكتب الضبط')
-            ->orWhere('division', 'الكتابة الخاصة للسيد المدير')
             ->get();
         $members = User::where('division', $user->division)
             ->orderBy('services')

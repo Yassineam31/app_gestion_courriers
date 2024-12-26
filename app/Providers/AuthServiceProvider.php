@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use Illuminate\Support\Facades\Gate;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -23,6 +24,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('gestion_utilisateurs',function($user){
+          return $user->poste=='مدير' || $user->division=='المركز الجهوي لمنظومة الإعلام في حكم قسم';   
+    });
     }
 }

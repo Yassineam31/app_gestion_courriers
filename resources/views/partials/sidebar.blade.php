@@ -24,7 +24,9 @@
                 <a href="/archives" class="link" title="الأرشيف"><i class="fa-solid fa-box-archive" style='font-size:23px; margin-right:5px;'></i><span class="link_text">الأرشيف</span></a>
                 <a href="/notifications" class="link" title="تنبيهات"><i class="fa-solid fa-bell" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">تنبيهات</span></a>
                 <a href="/contact_section" class="link" title="قسم التواصل"><i class="fa-solid fa-user-group" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">قسم التواصل</span></a>
-                <a href="/users" class="link" title="تدبير الأعضاء"><i class="fa-solid fa-people-group" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">تدبير الأعضاء </span></a>
+                @can('gestion_utilisateurs',App\Models\User::class)
+                    <a href="/users" class="link" title="تدبير الأعضاء"><i class="fa-solid fa-people-group" style='font-size:23px; margin-right:5px;'></i> <span class="link_text">تدبير الأعضاء </span></a>
+                @endcan
             </div>
         </div>
 @endonce
