@@ -60,22 +60,26 @@
                 </div>
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form>
+                    <form action="{{ route('submit.form') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="mb-3">
                             <label for="recipientEmail" class="form-label">البريد الإلكتروني للمستلم</label>
-                            <input type="email" class="form-control" placeholder="example@example.com" required>
+                            <div id="emails-container">
+                                 <input type="email" name="expediteur[]" class="form-control" placeholder="أدخل عنوان بريد إلكتروني" required>
+                            </div>
+                            <a href="#" id="add-email" style='text-decoration:none;'>إضافة بريد إلكتروني</a>
                         </div>
                         <div class="mb-3">
                             <label for="object" class="form-label">الموضوع</label>
-                            <input type="text" class="form-control" placeholder="موضوع الرسالة">
+                            <input type="text" name="object" class="form-control" placeholder="موضوع الرسالة">
                         </div>
                         <div class="mb-3">
                         <label for="messageContent" class="form-label">مرفقات</label>
-                        <input type="file" name="fichier" class="form-control" multiple>
+                        <input type="file" name="fichiers[]" class="form-control" multiple>
                         </div>
                         <div class="mb-3">
                             <label for="messageContent" class="form-label">محتوى الرسالة</label>
-                            <textarea class="form-control" rows="4" placeholder="اكتب رسالتك هنا..."></textarea>
+                            <textarea class="form-control" name='messageContent' rows="4" placeholder="اكتب رسالتك هنا..."></textarea>
                         </div>
                         <!-- Modal Footer -->
                         <div class="modal-footer">
@@ -89,4 +93,15 @@
     </div>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('add-email').addEventListener('click', function () {
+            const container = document.getElementById('emails-container');
+            const input = document.createElement('input');
+            input.type = 'email';
+            input.name = 'expediteur[]';
+            input.className = 'form-control mt-2';
+            input.placeholder = "أدخل عنوان بريد إلكتروني";
+            container.appendChild(input);
+        });
+    </script>
 @endsection

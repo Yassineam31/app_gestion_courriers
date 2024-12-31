@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\pagination\paginator;
+use App\Events\MailEvent;
 
 class UserController extends Controller
 {
@@ -116,6 +117,27 @@ class UserController extends Controller
             ->orderBy('services')
             ->get();
         return view('users.contactSection',compact('users','members'));
+    }
+    
+    public function storeModalData(Request $request){
+
+        $expediteurs = $request->input('expediteur');
+        $object = $request->input('object');
+        $messageContent = $request->input('messageContent');
+
+        $fichiersPaths = [];
+        if ($request->hasFile('fichiers')) {
+            foreach ($request->file('fichiers') as $fichier) {
+                $originalName = $fichier->getClientOriginalName();
+                $path = $fichier->storeAs('temporary_files', $originalName);
+                $fichiersPaths[] = $path;
+            }
+        }
+        foreach ($expediteurs as $expediteur) {
+            // Déclencher un événement pour chaque destinataire
+            event(new MailEvent($expediteur, $object, $fichiersPaths, $messageContent));
+        }
+        return redirect()->route('contactSection')->with('succes','تم إرسال الرسالة بنجاح');
     }
     
 }

@@ -18,7 +18,7 @@
                 <i class="fa-solid fa-print"></i>
             </div>
             <div class="row" id="contentToPrint">
-            <h1 style='font-weight:700;text-align:center;'>معلومات البريد الوارد</h1>
+                <h1 style='font-weight:700;text-align:center;'>معلومات البريد الوارد</h1>
                 <div class="col-md-6">
                     <div class="card-body">
                         <p class="card-title"><span>المرجع: </span> {{ $courrierEntrant->Reference }}</p>
@@ -44,77 +44,6 @@
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="card mt-3">
-                <div class="card-header" style="background-color:#353b49; color:white; font-weight:700;">
-                    # مشاركة مع
-                </div>
-                <form action="" method="POST">
-                    @csrf
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-2">
-                                    <input type="checkbox" id="partage1" name="partage1" class="form-check-input">
-                                    <label for="partage1" class="form-check-label">المدير</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="partage2" name="partage2" class="form-check-input">
-                                    <label for="partage2" class="form-check-label">الكتابة الخاصة للسيد المدير</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="partage3" name="partage3" class="form-check-input">
-                                    <label for="partage3" class="form-check-label">مكتب الضبط</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="partage4" name="partage4" class="form-check-input">
-                                    <label for="partage4" class="form-check-label">قسم الشؤون الإدارية والمالية</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="partage5" name="partage5" class="form-check-input">
-                                    <label for="partage5" class="form-check-label">قسم تدبير الموارد البشرية</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-2">
-                                    <input type="checkbox" id="partage6" name="partage6" class="form-check-input">
-                                    <label for="partage6" class="form-check-label">قسم التخطيط والخريطة المدرسية</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="partage7" name="partage7" class="form-check-input">
-                                    <label for="partage7" class="form-check-label">قسم الشؤون التربوية</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="partage8" name="partage8" class="form-check-input">
-                                    <label for="partage8" class="form-check-label">المركز الجهوي لمنظومة الإعلام في حكم قسم</label>
-                                </div>
-                                <div class="mb-2">
-                                    <input type="checkbox" id="partage9" name="partage9" class="form-check-input">
-                                    <label for="partage8" class="form-check-label">أعضاء القسم</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label for="remarque" class="form-label">ملاحظات :</label>
-                            <textarea class="form-control" id="remarque" name="remarque" rows="3"></textarea>
-                        </div>
-                        <div class="mb-2">
-                            <input type="hidden" name="reference" value="{{ $courrierEntrant->Reference }}">
-                            <input type="hidden" name="expediteur" value="{{ $courrierEntrant->Expediteur }}">
-                            <input type="hidden" name="numero_inscription" value="{{ $courrierEntrant->NumeroInscriptionAcademie }}">
-                            <input type="hidden" name="date_inscription" value="{{ $courrierEntrant->DateInscriptionAcademie }}">
-                            <input type="hidden" name="date_envoi_entite" value="{{ $courrierEntrant->DateEnvoiEntiteExpeditrice }}">
-                            <input type="hidden" name="numero_envoi" value="{{ $courrierEntrant->NumeroEnvoiEntiteExpeditrice }}">
-                            <input type="hidden" name="correspondance_reponse" value="{{ $courrierEntrant->CorrespondanceRequiertReponse }}">
-                            <input type="hidden" name="repondu" value="{{ $courrierEntrant->Repondu }}">
-                            <input type="hidden" name="dernier_delai" value="{{ $courrierEntrant->DernierDelaiReponse }}">
-                            <input type="hidden" name="sujet" value="{{ $courrierEntrant->SujetCorrespondance }}">
-                            <input type="hidden" name="telechargement" value="{{ $courrierEntrant->TelechargementCorrespondance }}">
-                            <input type="hidden" name="statut" value="{{ $courrierEntrant->Statut }}">
-                        </div>
-                        <button type="submit" class="btn btn-dark">إرسال</button>
-                    </div>
-                </form>
             </div>
         </div>
         <a href="{{route('courrier_entrants.index')}}" class="btn btn-success mt-2" style="width:100px;display:block; margin:0 auto;font-weight:700;">رجـــــــوع</a>

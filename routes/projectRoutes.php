@@ -19,9 +19,10 @@ use App\Http\Controllers\ExtraController;
 |
 */
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
     Route::resource('/users',UserController::class);
     Route::get('/contact_section',[UserController::class,'contactSectionIndex'])->name('contactSection');
+    Route::post('/contact_section',[UserController::class,'storeModalData'])->name('submit.form');
     Route::resource('/courrier_entrants',CourrierEntrantController::class);
     Route::resource('/archive_entrants',ArchiveEntrantController::class);
     Route::resource('/courrier_sortants',CourrierSortantController::class);
