@@ -7,12 +7,12 @@
 
 {{-- Action Button --}}
 <x-mail::button :url="$resetUrl">
-    @lang('إعادة تعيين كلمة المرور')
+@lang('إعادة تعيين كلمة المرور')
 </x-mail::button>
 
 {{-- Outro Lines --}}
-    @lang("إذا لم تطلب إعادة تعيين كلمة المرور، فلا داعي لاتخاذ أي إجراء .")
+@lang("إدارة منصة تدبير المراسلات")
 
 {{-- Salutation --}}
-@lang('مع تحياتنا،'),<br>
+@lang('&copy; 2025')<br>
 </x-mail::message>

@@ -46,12 +46,12 @@ class CustomResetPasswordNotification extends Notification
 
         // Retourner l'email avec un message personnalisé
         return (new MailMessage)
-            ->subject(__('Réinitialisation de votre mot de passe'))
-            ->greeting(__('Bonjour!'))
-            ->line(__('Vous recevez cet email car nous avons reçu une demande de réinitialisation de votre mot de passe.'))
-            ->action(__('Réinitialiser le mot de passe'), $resetUrl)
-            ->line(__('Si vous n\'avez pas demandé de réinitialisation, aucune action supplémentaire n\'est requise.'))
-            ->salutation(__('Cordialement,') . '<br>' . config('app.name'));
+            ->subject(__('إعادة تعيين كلمة المرور'))
+            ->greeting(__('مرحباً،'))
+            ->line(__('لقد تلقينا طلباً لإعادة تعيين كلمة المرور الخاصة بحسابك'))
+            ->action(__('إعادة تعيين كلمة المرور'), $resetUrl)
+            ->line(__('إدارة منصة تدبير المراسلات'))
+            ->salutation(__('&copy; 2025'));
     }
 
     /**
