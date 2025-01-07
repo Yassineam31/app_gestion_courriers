@@ -30,7 +30,7 @@
                     <td>{{$archive_sortant->Statut}}</td>
                     <td>
                         <a href="{{route('restoreOutgoing',$archive_sortant->id)}}" title='إرجاع إلى قائمة البريد الصادر'><i class="fa-solid fa-rotate-left"></i></a>
-                        |<a href="{{route('archive_sortants.edit',$archive_sortant->id)}}" title='تعديل'><i class="fa-solid fa-pen-to-square" style="margin-right:2px;"></i></a><br>
+                        |{{--<a href="{{route('archive_sortants.edit',$archive_sortant->id)}}" title='تعديل'><i class="fa-solid fa-pen-to-square" style="margin-right:2px;"></i></a><br>--}}
                         <a href="{{route('archive_sortants.show',$archive_sortant->id)}}" title='إظهار'> <i class="fa-solid fa-eye"></i></a>
                         | <button id="openModalBtn{{$archive_sortant->id}}" title='حذف'><i class="fa-solid fa-trash"></i></button>
                     </td>
@@ -154,9 +154,9 @@
                             <a href="/restaureArchiveSortant/${item.id}" title='إرجاع إلى قائمة البريد الصادر' style="text-decoration:none;">
                                 <i class="fa-solid fa-rotate-left"></i>
                             </a> |
-                            <a href="/archive_sortants/${item.id}/edit" title='تعديل' style="text-decoration:none;">
+                            {{-- <a href="/archive_sortants/${item.id}/edit" title='تعديل' style="text-decoration:none;">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                            </a><br>
+                            </a><br> --}}
                             <a href="/archive_sortants/${item.id}" title='إظهار' style="text-decoration:none;">
                                 <i class="fa-solid fa-eye"></i>
                             </a> |

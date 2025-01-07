@@ -110,7 +110,7 @@ class UserController extends Controller
             $query->where('poste', 'مدير')
                 ->orWhere('poste', 'رئيس القسم')
                 ->orWhere('poste', 'كاتب عام')
-                ->orWhere('poste', 'رئيس مكتب الضبط');
+                ->orWhere('poste', 'مسؤول مكتب الضبط');
             })
             ->get();
         $members = User::where('division', $user->division)

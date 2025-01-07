@@ -47,7 +47,7 @@
                 <datalist id="poste-options">
                     <option value="مدير">مدير</option>
                     <option value="رئيس قسم">رئيس قسم</option>
-                    <option value="رئيس مكتب الضبط">رئيس مكتب الضبط</option>
+                    <option value="مسؤول مكتب الضبط">مسؤول مكتب الضبط</option>
                     <option value="كاتب عام">كاتب عام</option>
                     <option value="موظف">موظف</option>
                 </datalist>

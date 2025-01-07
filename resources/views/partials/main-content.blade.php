@@ -18,7 +18,7 @@
         {{-- Contenu principal --}}
             @yield('main-content')
     </div>
-        @vite(['resources/js/sideBar.js','resources/js/alerts.js'])
+        @vite(['resources/js/sideBar.js','resources/js/alerts.js','resources/js/notificationMark.js'])
 </body>
 </html> 
 @endonce

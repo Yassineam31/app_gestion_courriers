@@ -39,7 +39,7 @@
     @forelse($members as $member)
     <tr>
         <td>{{$member->name}}</td>
-        <td>{{$member->services}}</td>
+        <td>{{$member->services ?? 'لا شيء'}}</td>
         <td>{{$member->poste}}</td>
         <td>{{$member->email}}</td>
     </tr>

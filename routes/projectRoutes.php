@@ -7,6 +7,7 @@ use App\Http\Controllers\ArchiveEntrantController;
 use App\Http\Controllers\CourrierSortantController;
 use App\Http\Controllers\ArchiveSortantController;
 use App\Http\Controllers\ExtraController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,11 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/searchCourrierSortant',[ExtraController::class, 'searchSortant'])->name('searchSortant');
     Route::post('/searchArchiveSortant',[ExtraController::class, 'searchArchiveSortant'])->name('searchArchiveSortant');
     Route::post('/searchUser',[ExtraController::class, 'searchUser'])->name('searchUser');
+    Route::get('/notifications', [NotificationController::class, 'notifications'])->name('notifications.index');
+    Route::put('/notifications/{notificationId}/showIncomingMail', [NotificationController::class, 'markAsReadNewCourrierAdded'])->name('notifications.NewCourrierAdded');
+    Route::put('/notifications/{notificationId}/showOutgoingMail', [NotificationController::class, 'markAsReadNewCourrierSortant'])->name('notifications.NewCourrierSortant');
+    Route::put('/notifications/{notificationId}/showUpdatedIncomingMail', [NotificationController::class, 'markAsReadUpdatedCourrierAdded'])->name('notifications.UpdateCourrierAdded');
+    Route::put('/notifications/{notificationId}/showUpdatedOutgoingMail', [NotificationController::class, 'markAsReadUpdatedCourrierSortant'])->name('notifications.UpdateCourrierSortant');
+    Route::get('/notifications-count', [NotificationController::class, 'getNotificationsCount']);
+    Route::delete('/delete-notification/{id}', [NotificationController::class, 'destroy'])->name('notification.destroy');
 });

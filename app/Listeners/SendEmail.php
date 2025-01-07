@@ -38,14 +38,6 @@ class SendEmail implements ShouldQueue
             $mail->attach(Storage::path($path));
         }
 
-    Mail::to($expediteur)->send($mail);
-       /* $expediteur=$request['expediteur'];
-        $data=[
-            'from_adresse'=>auth()->user->email,
-            'objet'=>$request['object'],
-            'msgContenu'=>$request['messageContent']
-        ];
-        Mail::to($expediteur)->send(new AcademieMail($data));
-        echo 'msg env';*/
+        Mail::to($expediteur)->send($mail);
     }
 }

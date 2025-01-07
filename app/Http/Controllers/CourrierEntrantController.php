@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\CourrierEntrant;
+use App\Events\NewCourrierAddedEvent;
+use App\Events\UpdateCourrierAddedEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -57,8 +59,13 @@ class CourrierEntrantController extends Controller
             $data['DernierDelaiReponse']=$request['DernierDelaiReponse'];
             $data['Statut']=$request['Statut'];
             $data['user_id']=Auth::id();
-
-        $post=CourrierEntrant::create($data);
+        
+        $courrier=CourrierEntrant::create($data);
+        $user=Auth::user();
+        if(in_array($user->poste, ['مدير', 'رئيس القسم', 'كاتب عام', 'مسؤول مكتب الضبط'])){
+            event(new NewCourrierAddedEvent($courrier)); 
+        }
+        
         return redirect()->route('courrier_entrants.index')->with('succes','تمت إظافة البريد بنجاح');
     }
 
@@ -109,6 +116,11 @@ class CourrierEntrantController extends Controller
         $data['user_id']=Auth::id();
 
         $courrierEntrant->update($data);
+        $courrier = $courrierEntrant->fresh(); // Recharge les données mises à jour du modèle depuis la base de données
+        $user=Auth::user();
+        if(in_array($user->poste, ['مدير', 'رئيس القسم', 'كاتب عام', 'مسؤول مكتب الضبط'])){
+            event(new UpdateCourrierAddedEvent($courrier)); 
+        }
         return redirect()->route('courrier_entrants.index')->with('success','تم تعديل البريد بنجاح');
     }
 

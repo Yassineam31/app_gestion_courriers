@@ -21,6 +21,22 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\MailEvent'::class => [
             'App\Listeners\SendEmail'::class,
         ],
+        
+        '\App\Events\NewCourrierAddedEvent'::class => [
+            '\App\Listeners\NotifyUsersOnNewCourrier'::class,
+        ],
+        
+        '\App\Events\NewCourrierSortantEvent'::class => [
+            '\App\Listeners\NotifyUsersOnNewCourrierSortant'::class,
+        ],
+        
+        '\App\Events\UpdateCourrierAddedEvent'::class => [
+            '\App\Listeners\NotifyUsersOnUpdateCourrierAdded'::class,
+        ],
+        
+        '\App\Events\UpdateCourrierSortantEvent'::class => [
+            '\App\Listeners\NotifyUsersOnUpdateCourrierSortant'::class,
+        ]
     ];
 
     /**

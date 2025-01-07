@@ -25,7 +25,7 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td style="max-width: 150px; word-wrap: break-word;">{{$user->division}}</td>
-                <td style="max-width: 150px; word-wrap: break-word;">{{$user->services}}</td>
+                <td style="max-width: 150px; word-wrap: break-word;">{{$user->services ?? 'لا شيء' }}</td>
                 <td>{{$user->poste}}</td>
                 <td class='p-3'>
                 <a href="{{route('users.edit',$user->id)}}" title='تعديل'><i class="fa-solid fa-pen-to-square"></i></a>
@@ -130,7 +130,7 @@
                         <td>${item.name}</td>
                         <td>${item.email}</td>
                         <td style="max-width: 150px; word-wrap: break-word;">${item.division}</td>
-                        <td style="max-width: 150px; word-wrap: break-word;">${item.services}</td>
+                        <td style="max-width: 150px; word-wrap: break-word;">${item.services ? item.services : 'لا شيء'}</td>
                         <td>${item.poste}</td>
                         <td>
                             <a href="/users/${item.id}/edit" title='تعديل' style="text-decoration:none;">

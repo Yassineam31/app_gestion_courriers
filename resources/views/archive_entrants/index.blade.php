@@ -30,7 +30,7 @@
                 <td>{{$archive_entrant->Statut}}</td>
                 <td>
                     <a href="{{route('restoreIncoming',$archive_entrant->id)}}" title='إرجاع إلى قائمة البريد الوارد'><i class="fa-solid fa-rotate-left"></i></a>
-                |<a href="{{route('archive_entrants.edit',$archive_entrant->id)}}" title='تعديل'><i class="fa-solid fa-pen-to-square"></i></a><br>
+                    |{{--<a href="{{route('archive_entrants.edit',$archive_entrant->id)}}" title='تعديل'><i class="fa-solid fa-pen-to-square"></i></a><br>--}}
                     <a href="{{route('archive_entrants.show',$archive_entrant->id)}}" title='إظهار'><i class="fa-solid fa-eye"></i></a>
                 | <button id="openModalBtn{{$archive_entrant->id}}" title='حذف'><i class="fa-solid fa-trash"></i></button>
                 </td>       
@@ -154,9 +154,9 @@
                             <a href="/restaureArchiveEntrant/${item.id}" title='إرجاع إلى قائمة البريد الوارد' style="text-decoration:none;">
                                 <i class="fa-solid fa-rotate-left"></i>
                             </a> |
-                            <a href="/archive_entrants/${item.id}/edit" title='تعديل' style="text-decoration:none;">
+                            {{--<a href="/archive_entrants/${item.id}/edit" title='تعديل' style="text-decoration:none;">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                            </a><br>
+                            </a><br>--}}
                             <a href="/archive_entrants/${item.id}" title='إظهار' style="text-decoration:none;">
                                 <i class="fa-solid fa-eye"></i>
                             </a> |

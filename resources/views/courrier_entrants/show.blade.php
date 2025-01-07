@@ -21,21 +21,21 @@
                 <h1 style='font-weight:700;text-align:center;'>معلومات البريد الوارد</h1>
                 <div class="col-md-6">
                     <div class="card-body">
-                        <p class="card-title"><span>المرجع: </span> {{ $courrierEntrant->Reference }}</p>
-                        <p class="card-text"><span>المرسل :</span> {{ $courrierEntrant->Expediteur }}</p>
-                        <p class="card-text"><span>رقم التسجيل بالأكاديمية :</span> {{ $courrierEntrant->NumeroInscriptionAcademie }}</p>
-                        <p class="card-text"><span>تاريخ التسجيل بالأكاديمية :</span> {{ $courrierEntrant->DateInscriptionAcademie }}</p>
-                        <p class="card-text"><span>تاريخ إرسال الجهة المرسلة :</span> {{ $courrierEntrant->DateEnvoiEntiteExpeditrice }}</p>
-                        <p class="card-text"><span>رقم إرسال الجهة المرسلة :</span> {{ $courrierEntrant->NumeroEnvoiEntiteExpeditrice }}</p>
-                        <p class="card-text"><span>موضوع المراسلة :</span> {{ $courrierEntrant->SujetCorrespondance }}</p>
+                        <p class="card-title"><span>المرجع: </span> {{ $courrierEntrant->Reference ?? 'لا شيء' }}</p>
+                        <p class="card-text"><span>المرسل :</span> {{ $courrierEntrant->Expediteur ?? 'لا شيء' }}</p>
+                        <p class="card-text"><span>رقم التسجيل بالأكاديمية :</span> {{ $courrierEntrant->NumeroInscriptionAcademie ?? 'لا شيء' }}</p>
+                        <p class="card-text"><span>تاريخ التسجيل بالأكاديمية :</span> {{ $courrierEntrant->DateInscriptionAcademie ?? 'لا شيء' }}</p>
+                        <p class="card-text"><span>تاريخ إرسال الجهة المرسلة :</span> {{ $courrierEntrant->DateEnvoiEntiteExpeditrice ?? 'لا شيء' }}</p>
+                        <p class="card-text"><span>رقم إرسال الجهة المرسلة :</span> {{ $courrierEntrant->NumeroEnvoiEntiteExpeditrice ?? 'لا شيء' }}</p>
+                        <p class="card-text"><span>موضوع المراسلة :</span> {{ $courrierEntrant->SujetCorrespondance ?? 'لا شيء' }}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
-                        <p class="card-text"><span>مراسلة تستلزم الرد :</span> {{ $courrierEntrant->CorrespondanceRequiertReponse }}</p>
-                        <p class="card-text"><span>تم الرد عليها :</span> {{ $courrierEntrant->Repondu }}</p>
-                        <p class="card-text"><span>آخر أجل للرد :</span> {{ $courrierEntrant->DernierDelaiReponse }}</p>
-                        <p class="card-text"><span>الحالة :</span> {{ $courrierEntrant->Statut }}</p>
+                        <p class="card-text"><span>مراسلة تستلزم الرد :</span> {{ $courrierEntrant->CorrespondanceRequiertReponse ?? 'لا شيء' }}</p>
+                        <p class="card-text"><span>تم الرد عليها :</span> {{ $courrierEntrant->Repondu ?? 'لا شيء' }}</p>
+                        <p class="card-text"><span>آخر أجل للرد :</span> {{ $courrierEntrant->DernierDelaiReponse ?? 'لا شيء' }}</p>
+                        <p class="card-text"><span>الحالة :</span> {{ $courrierEntrant->Statut ?? 'لا شيء' }}</p>
                         <p class="card-text" id='pieces_jointes'><span>المرفقات :</span>
                             <a href="{{ asset('storage/'.$courrierEntrant->TelechargementCorrespondance) }}" download="{{basename($courrierEntrant->TelechargementCorrespondance)}}" style="text-decoration:none;"> 
                                 <i class="fa-solid fa-download"></i>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\CourrierSortant;
 use Illuminate\Support\Facades\Auth;
+use App\Events\NewCourrierSortantEvent;
+use App\Events\UpdateCourrierSortantEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\pagination\paginator;
@@ -55,7 +57,11 @@ class CourrierSortantController extends Controller
         $data['ReponseRecue']=$request['ReponseRecue'];
         $data['Statut']=$request['Statut'];
         $data['user_id']=Auth::id();
-        $post=CourrierSortant::create($data);
+        $courrier=CourrierSortant::create($data);
+        $user=Auth::user();
+        if(in_array($user->poste, ['مدير', 'رئيس القسم', 'كاتب عام', 'مسؤول مكتب الضبط'])){
+            event(new NewCourrierSortantEvent($courrier));
+        }
         return redirect()->route('courrier_sortants.index')->with('succes','تمت إضافة البريد بنجاح');
     }
 
@@ -103,6 +109,11 @@ class CourrierSortantController extends Controller
         $data['Statut']=$request['Statut'];
         $data['user_id']=Auth::id();
         $courrierSortant->update($data);
+        $courrier = $courrierSortant->fresh(); // Recharge les données mises à jour du modèle depuis la base de données
+        $user=Auth::user();
+        if(in_array($user->poste, ['مدير', 'رئيس القسم', 'كاتب عام', 'مسؤول مكتب الضبط'])){
+            event(new UpdateCourrierSortantEvent($courrier));
+        }
         return redirect()->route('courrier_sortants.index')->with('success','تم تعديل البريد بنجاح');
     }
 
