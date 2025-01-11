@@ -139,7 +139,6 @@ class ExtraController extends Controller
         $results = User::where('name', 'LIKE', "%{$query}%")
             ->orWhere('email', 'LIKE', "%{$query}%")
             ->orWhere('division', 'LIKE', "%{$query}%")
-            ->orWhere('services', 'LIKE', "%{$query}%")
             ->orWhere('poste', 'LIKE', "%{$query}%")
             ->orWhere('services', 'LIKE', "%{$query}%")
             ->get();

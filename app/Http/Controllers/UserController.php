@@ -108,8 +108,8 @@ class UserController extends Controller
         $user = auth()->user();
         $users=User::where(function ($query) {
             $query->where('poste', 'مدير')
-                ->orWhere('poste', 'رئيس القسم')
                 ->orWhere('poste', 'كاتب عام')
+                ->orWhere('poste', 'رئيس القسم')
                 ->orWhere('poste', 'مسؤول مكتب الضبط');
             })
             ->get();
