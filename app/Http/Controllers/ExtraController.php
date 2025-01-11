@@ -70,6 +70,7 @@ class ExtraController extends Controller
                     ->orWhere('Expediteur', 'LIKE', "%{$query}%")
                     ->orWhere('SujetCorrespondance', 'LIKE', "%{$query}%")
                     ->orWhere('Statut', 'LIKE', "%{$query}%")
+                    ->orWhere('DernierDelaiReponse', 'LIKE', "%{$query}%")
                     ->orWhere('DateInscriptionAcademie', 'LIKE', "%{$query}%")
                     ->orWhere('DateEnvoiEntiteExpeditrice', 'LIKE', "%{$query}%");
                 })
@@ -90,6 +91,7 @@ class ExtraController extends Controller
                 ->orWhere('Expediteur', 'LIKE', "%{$query}%")
                 ->orWhere('SujetCorrespondance', 'LIKE', "%{$query}%")
                 ->orWhere('Statut', 'LIKE', "%{$query}%")
+                ->orWhere('DernierDelaiReponse', 'LIKE', "%{$query}%")
                 ->orWhere('DateInscriptionAcademie', 'LIKE', "%{$query}%")
                 ->orWhere('DateEnvoiEntiteExpeditrice', 'LIKE', "%{$query}%");
             })
