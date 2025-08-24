@@ -20,7 +20,7 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
-Route::middleware('verified')->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
     Route::resource('/users',UserController::class);
     Route::get('/contact_section',[UserController::class,'contactSectionIndex'])->name('contactSection');
     Route::post('/contact_section',[UserController::class,'storeModalData'])->name('submit.form');
